@@ -1,0 +1,39 @@
+@import "objective.css";
+
+body {
+ 	width: 100vw;
+ 	height: 100vh;
+
+ 	padding: 0px;
+ 	margin: 0px;
+
+ 	font-family: Helvetica;
+}
+
+#pets {
+	font-size: 3vh;
+	margin: 10px;
+}
+
+#cat {
+ 	position: absolute;
+ 	width: 35vh;
+ 	
+  	left: 0;
+  	right: 0;
+  	top: 0;
+  	bottom: 0;
+  	margin: auto;
+}
+
+.cat-anim {
+	animation: cat-anim 0.1s linear 0s;
+}
+
+@keyframes cat-anim {
+	0% {scale: 1;}
+	33% {scale: 0.95;}
+	67% {scale: 1.05;}
+	100% {scale: 1;}
+}
+
