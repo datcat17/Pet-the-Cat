@@ -1,28 +1,34 @@
 @import "objective.css";
+@import "store.css";
 
 body {
+	display: flex;
+	flex-direction: row;
+
  	width: 100vw;
  	height: 100vh;
 
  	padding: 0px;
  	margin: 0px;
+	overflow: hidden;
 
  	font-family: Helvetica;
 }
 
 #pets {
+	position: relative;
 	font-size: 3vh;
-	margin: 10px;
+	margin: 0;
+	text-align: center;
+
+	width: 100%;
+	height: 0;
 }
 
 #cat {
- 	position: absolute;
+ 	position: relative;
  	width: 35vh;
  	
-  	left: 0;
-  	right: 0;
-  	top: 0;
-  	bottom: 0;
   	margin: auto;
 }
 
@@ -37,3 +43,24 @@ body {
 	100% {scale: 1;}
 }
 
+ #cat-box {
+	position: relative;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+
+	top: 0;
+
+	grid-area: cell;
+ }
+
+ #main {
+	width: 100%;
+	flex-basis: 50%;
+    flex-grow: 1;
+ }
+
+ @keyframes main-anim {
+	from {width: 100%;}
+	to {width: 200%;}
+ }

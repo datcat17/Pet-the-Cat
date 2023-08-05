@@ -6,7 +6,7 @@
 }
 
 .objective-anim {
-	animation: anim 2s ease-in-out 0s;
+	animation: anim 2s ease-in-out 0s
 }
 
 #objective {
@@ -16,7 +16,10 @@
 	align-items: center;
 	justify-content: center;
 
+	grid-area: objective;
+
 	top: 0;
+	left: 0;
 	width: 100%;
 	height: 8vh;
 	border-bottom: 2px solid black;
@@ -32,9 +35,4 @@
 	padding: 0 5px;
 
 	text-align: center;
-}
-
-
-#objective h2 {
-	
 }

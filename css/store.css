@@ -1,0 +1,47 @@
+/* @keyframes store-anim {
+    from {right: 0; width: 100%;}
+    to {right: -50vw; width: 0%;}
+} */
+
+@keyframes store-anim {
+    from {width: 50%;}
+    to {width: 0%;}
+}
+
+.open-store {
+    animation: store-anim 0.2s ease-out 0s infinite reverse forwards;
+}
+
+.close-store {
+    animation: store-anim 0.2s ease-out 0s infinite normal forwards;
+}
+
+#store {
+    position: relative; 
+
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 100vh;
+    background-color: lightgray;
+    z-index: 1;
+}
+
+#store-collapse {
+    width: 5vh;
+    height: 5vh;
+    
+    border: 2px solid black;
+}
+
+#open-store {
+    position: absolute;
+    width: 3vh;
+    height: 60vh;
+
+    right: 0;
+    top: auto;
+    bottom: auto;
+
+    border: 2px dashed red;
+}

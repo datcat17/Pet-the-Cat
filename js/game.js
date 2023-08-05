@@ -16,6 +16,27 @@ function petClick(event) {
 	}, 100);
 }
 
+function toggleStore(action) {
+	console.log("Toggling store");
+	let store = document.getElementById("store");
+	if(action == "close") {
+		store.classList.add("open-store");
+
+		setTimeout(function() {
+			store.style.width = "50%";
+			store.classList.remove("open-store");
+		}, 200);
+	}
+	else {
+		store.classList.add("close-store");
+
+		setTimeout(function() {
+			store.style.width = "0%";
+			store.classList.remove("close-store");
+		}, 200);
+	}
+}
+
 
 // Start loop
 window.requestAnimationFrame(gameLoop);
@@ -35,3 +56,9 @@ function gameLoop(timeStamp) {
 
 // Event Listeners
 document.getElementById("cat").addEventListener("click", petClick);
+document.getElementById("store-collapse").addEventListener("click", function() {
+	toggleStore("open");
+});
+document.getElementById("open-store").addEventListener("click", function() {
+	toggleStore("close");
+});
