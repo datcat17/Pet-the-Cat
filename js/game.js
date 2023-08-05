@@ -3,7 +3,8 @@
 function updatePets(secondsPassed) {
 	let buffer = gameData.pps * secondsPassed;
 	gameData.pets += buffer;
-	document.getElementById("pets").innerHTML = Math.floor(gameData.pets);
+	document.getElementById("pets").innerHTML = `${Math.floor(gameData.pets)}`;
+	document.getElementById("pps").innerHTML = ` + ${gameData.pps} / s`;
 }
 
 function petClick(event) {
@@ -20,7 +21,9 @@ function toggleStore(action) {
 	console.log("Toggling store");
 	let store = document.getElementById("store");
 	if(action == "close") {
+		store.style.display = "block";
 		store.classList.add("open-store");
+		
 
 		setTimeout(function() {
 			store.style.width = "50%";
@@ -32,11 +35,11 @@ function toggleStore(action) {
 
 		setTimeout(function() {
 			store.style.width = "0%";
+			store.style.display = "none";
 			store.classList.remove("close-store");
 		}, 200);
 	}
 }
-
 
 // Start loop
 window.requestAnimationFrame(gameLoop);

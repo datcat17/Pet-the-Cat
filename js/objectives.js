@@ -2,7 +2,9 @@
 
 let descriptions = [
 	"Pet the cat",
-	"Pet the cat 10 times"
+	"Pet the cat 10 times",
+	"Open the store tab",
+	"Buy an upgrade"
 ];
 
 function changeObjective() {
@@ -24,19 +26,39 @@ function checkObjective() {
  	switch(gameData.objective) {
  	case 0:
  		if(gameData.pets > 0) {
- 			console.log("Objective " + gameData.objective + " has been completed.");
  			gameData.objective += 1;
  			changeObjective();
  		}
  		break;
  	case 1:
  		if(gameData.pets >= 10) {
- 			console.log("Objective " + gameData.objective + " has been completed.");
  			gameData.objective += 1;
+			document.getElementById("open-store").style.display = "block";
  			changeObjective();
  		}
  		break;
  	case 2:
+		obj3();
  		break;
+	case 3:
+		obj4();
+		break;
+	case 4:
+		break;
  	}
+}
+
+function obj3() {
+	if(document.getElementById("store").classList.contains("open-store")) {
+		gameData.objective += 1;
+ 		changeObjective();
+	}
+}
+
+function obj4() {
+	if(gameData.pps != 0) {
+		gameData.objective += 1;
+		document.getElementById("pps").style.display = "inline-block";
+ 		changeObjective();
+	}
 }

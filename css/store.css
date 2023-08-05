@@ -18,6 +18,7 @@
 
 #store {
     position: relative; 
+    display: none;
 
     right: 0;
     top: 0;
@@ -25,6 +26,9 @@
     height: 100vh;
     background-color: lightgray;
     z-index: 1;
+
+    border: 2px solid black;
+    box-sizing: border-box;
 }
 
 #store-collapse {
@@ -40,8 +44,45 @@
     height: 60vh;
 
     right: 0;
-    top: auto;
-    bottom: auto;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 
-    border: 2px dashed red;
+    border: 2px solid black;
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    background-color: lightgray;
+    opacity: 0.2;
+    transition: opacity 0.2s;
+
+    display: none;
+}
+
+#open-store:hover {
+    opacity: 1;
+}
+
+#store li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 60%;
+    height: 8vh;
+    border: 2px solid black;
+    border-radius: 18px;
+}
+
+#store ul {
+    list-style: none;
+}
+
+#store li h2, #store li h3 {
+    padding: 0;
+    margin: 0 5px;
+}
+
+#store li * {
+    pointer-events: none;
 }
