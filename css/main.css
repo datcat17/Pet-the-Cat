@@ -1,81 +1,87 @@
 @import "objective.css";
 @import "store.css";
+@import "mobile/main.css";
+@import "mobile/store.css";
 
-body {
-	display: flex;
-	flex-direction: row;
-
- 	width: 100vw;
- 	height: 100vh;
-
- 	padding: 0px;
- 	margin: 0px;
-	overflow: hidden;
-
- 	font-family: Helvetica;
-}
-
-#pets, #pps {
-	display: inline-block;
-	position: relative;
-	font-size: 3vh;
-	text-align: center;
-
-	margin: 0 5px;
-	height: 0;
-}
-
-#pps {
-	display: none;
-	text-align: left;
-}
-
-#values {
-	display: flex;
-	justify-content: center;
-
-	width: 100%;
-	height: 0;
-
-	box-sizing: border-box;
+body:before {
+	content: desktop;
 }
 
 #cat {
- 	position: relative;
- 	width: 35vh;
- 	
-  	margin: auto;
+	position: relative;
+	width: 35vh;
+	
+	 margin: auto;
 }
 
 .cat-anim {
-	animation: cat-anim 0.1s linear 0s;
+   animation: cat-anim 0.1s linear 0s;
 }
 
 @keyframes cat-anim {
-	0% {scale: 1;}
-	33% {scale: 0.95;}
-	67% {scale: 1.05;}
-	100% {scale: 1;}
+   0% {scale: 1;}
+   33% {scale: 0.95;}
+   67% {scale: 1.05;}
+   100% {scale: 1;}
 }
 
- #cat-box {
-	position: relative;
-	display: flex;
-	height: 100%;
-	justify-content: center;
+#cat-box {
+   position: relative;
+   display: flex;
+   height: 100%;
+   justify-content: center;
+}
 
-	top: 0;
-
-	grid-area: cell;
- }
-
- #main {
-	width: 100%;
-	flex-basis: 50%;
-    flex-grow: 1;
- }
-
- @keyframes main-anim {
-	from {width: 100%;}
-	to {width: 200%;}
- }
+@media only screen and (min-width: 768px) {
+	body {
+		display: flex;
+		flex-direction: row;
+	
+		 width: 100vw;
+		 height: 100vh;
+	
+		 padding: 0px;
+		 margin: 0px;
+		overflow: hidden;
+	
+		 font-family: Helvetica;
+	}
+	
+	#version {
+		position: absolute;
+		bottom: 0;
+		left: 1%;
+	
+		color: rgb(189, 189, 189);
+	}
+	
+	#pets, #pps {
+		display: inline-block;
+		position: relative;
+		font-size: 3vh;
+		text-align: center;
+	
+		margin: 0 5px;
+		height: 0;
+	}
+	
+	#pps {
+		display: none;
+	}
+	
+	#values {
+		display: flex;
+		justify-content: center;
+	
+		width: 100%;
+		height: 0;
+	
+		box-sizing: border-box;
+	}
+	
+	#main {
+		width: 100%;
+		flex-basis: 50%;
+		flex-grow: 1;
+	}
+}

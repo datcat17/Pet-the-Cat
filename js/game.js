@@ -18,15 +18,16 @@ function petClick(event) {
 }
 
 function toggleStore(action) {
-	console.log("Toggling store");
+	let mq = window.matchMedia( "(max-width: 767px)" );
 	let store = document.getElementById("store");
+
 	if(action == "close") {
 		store.style.display = "block";
 		store.classList.add("open-store");
-		
 
 		setTimeout(function() {
-			store.style.width = "50%";
+			if(mq.matches == true) { store.style.height = "50%"; }
+			else { store.style.width = "50%"; }
 			store.classList.remove("open-store");
 		}, 200);
 	}
@@ -34,7 +35,8 @@ function toggleStore(action) {
 		store.classList.add("close-store");
 
 		setTimeout(function() {
-			store.style.width = "0%";
+			if(mq.matches == true) { store.style.height = "0%"; }
+			else { store.style.width = "0%"; }
 			store.style.display = "none";
 			store.classList.remove("close-store");
 		}, 200);
