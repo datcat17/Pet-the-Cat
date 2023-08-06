@@ -2,6 +2,7 @@
 @import "store.css";
 @import "mobile/main.css";
 @import "mobile/store.css";
+@import "settings.css";
 
 body:before {
 	content: desktop;
@@ -30,6 +31,16 @@ body:before {
    display: flex;
    height: 100%;
    justify-content: center;
+}
+
+#values {
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
+	height: 0;
+
+	box-sizing: border-box;
 }
 
 @media only screen and (min-width: 768px) {
@@ -65,19 +76,9 @@ body:before {
 		height: 0;
 	}
 	
-	#pps {
+	/* #pps {
 		display: none;
-	}
-	
-	#values {
-		display: flex;
-		justify-content: center;
-	
-		width: 100%;
-		height: 0;
-	
-		box-sizing: border-box;
-	}
+	} */
 	
 	#main {
 		width: 100%;

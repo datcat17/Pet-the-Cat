@@ -27,9 +27,28 @@
         box-sizing: border-box;
     }
 
-    #store-collapse {
-        width: 100%;
+    #tabs {
+        display: flex;
+        flex-direction: row;
+
         height: 8vh;
+        width: 100%;
+        
+        border-right: 2px solid black;
+    
+        /* float: left; */
+    }
+
+    #tabs > * {
+        height: 100%;
+        width: 20%;
+        border: 2px solid black;
+        border-left: none;
+    }
+
+    #store-collapse {
+        /* width: 100%;
+        height: 8vh; */
         
         border-bottom: 2px solid black;
     }
@@ -51,7 +70,7 @@
         opacity: 0.2;
         transition: opacity 0.2s;
     
-        display: none;
+        display: block;
     }
 
     #open-store:hover {
@@ -86,5 +105,19 @@
     #store li * {
         pointer-events: none;
         user-select:none;
+    }
+
+    #tabs > * {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#tabs img {
+		height: 90%;
+	}
+
+    #settings {
+        display: none;
     }
 }

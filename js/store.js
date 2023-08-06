@@ -3,7 +3,7 @@ function toggleStore(action) {
 	let store = document.getElementById("store");
 
 	if(action == "close") {
-		store.style.display = "block";
+		store.style.display = "flex";
 		store.classList.add("open-store");
 
 		setTimeout(function() {
@@ -28,6 +28,7 @@ function toggleStore(action) {
 function changeTab(newTab) {
     document.getElementById(tempData.currentTab).style.display = "none";
     document.getElementById(newTab).style.display = "block";
+	tempData.currentTab = newTab;
 }
 
 
@@ -40,17 +41,12 @@ document.getElementById("open-store").addEventListener("click", function() {
 	toggleStore("close");
 });
 
+// Settings tab
 document.getElementById("settings-trigger").addEventListener("click", function() {
 	changeTab("settings");
 });
 
+// Upgrades tab
 document.getElementById("automatic-trigger").addEventListener("click", function() {
 	changeTab("automatic");
 });
-
-document.getElementById("debug").onchange = function() {
-    if(document.getElementById("debug").checked) { gameData.debugging = true; }
-	else { gameData.debugging = false; }
-	
-	if(gameData.debugging) { console.log("Debugging enabled."); }
-};

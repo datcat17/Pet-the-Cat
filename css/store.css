@@ -33,7 +33,7 @@
         
         border-right: 2px solid black;
     
-        float: left;
+        /* float: left; */
     }
 
     #tabs > * {
@@ -96,18 +96,22 @@
         user-select:none;
     }
 
-    #settings-trigger {
+    #tabs > * {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 
-	#settings-trigger img {
+	#tabs img {
 		width: 90%;
 	}
 
     #settings {
         display: none;
     }
-}
 
+    .tabs {
+        height: 100%;
+        width: 100%;
+    }
+}
