@@ -1,5 +1,11 @@
 "use strict";
 
+// Wipe the existing save
+function wipeSave() {
+	localStorage.removeItem('petTheCatSave');
+	window.location.reload();
+}
+
 function updatePets(secondsPassed) {
 	let buffer = gameData.pps * secondsPassed;
 	gameData.pets += buffer;
@@ -17,37 +23,10 @@ function petClick(event) {
 	}, 100);
 }
 
-function toggleStore(action) {
-	let mq = window.matchMedia( "(max-width: 767px)" );
-	let store = document.getElementById("store");
-
-	if(action == "close") {
-		store.style.display = "block";
-		store.classList.add("open-store");
-
-		setTimeout(function() {
-			if(mq.matches == true) { store.style.height = "50%"; }
-			else { store.style.width = "50%"; }
-			store.classList.remove("open-store");
-		}, 200);
-	}
-	else {
-		store.classList.add("close-store");
-
-		setTimeout(function() {
-			if(mq.matches == true) { store.style.height = "0%"; }
-			else { store.style.width = "0%"; }
-			store.style.display = "none";
-			store.classList.remove("close-store");
-		}, 200);
-	}
-}
-
 // Start loop
 window.requestAnimationFrame(gameLoop);
 
 // Game loop
-
 let oldTimeStamp = 0;
 let secondsPassed = 0;
 function gameLoop(timeStamp) {
@@ -61,9 +40,3 @@ function gameLoop(timeStamp) {
 
 // Event Listeners
 document.getElementById("cat").addEventListener("click", petClick);
-document.getElementById("store-collapse").addEventListener("click", function() {
-	toggleStore("open");
-});
-document.getElementById("open-store").addEventListener("click", function() {
-	toggleStore("close");
-});

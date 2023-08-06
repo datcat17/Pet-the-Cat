@@ -7,6 +7,11 @@ let descriptions = [
 	"Buy an upgrade"
 ];
 
+// Initialize objective
+document.getElementById("objective").lastChild.previousSibling.innerHTML = descriptions[gameData.objective];
+
+
+// Changes the current objective
 function changeObjective() {
 	document.getElementById("objective").style.backgroundColor="lightgreen";
 	document.getElementById("objective").classList.add("objective-anim");
@@ -22,20 +27,15 @@ function changeObjective() {
 	
 }
 
+
+// Checks to see if the current objective has been completed. If so, change the objective
 function checkObjective() {
  	switch(gameData.objective) {
  	case 0:
- 		if(gameData.pets > 0) {
- 			gameData.objective += 1;
- 			changeObjective();
- 		}
+ 		obj1();
  		break;
  	case 1:
- 		if(gameData.pets >= 10) {
- 			gameData.objective += 1;
-			document.getElementById("open-store").style.display = "block";
- 			changeObjective();
- 		}
+		obj2();
  		break;
  	case 2:
 		obj3();
@@ -46,6 +46,21 @@ function checkObjective() {
 	case 4:
 		break;
  	}
+}
+
+function obj1() {
+	if(gameData.pets > 0) {
+		gameData.objective += 1;
+		changeObjective();
+	}
+}
+
+function obj2() {
+	if(gameData.pets >= 10) {
+		gameData.objective += 1;
+	   document.getElementById("open-store").style.display = "block";
+		changeObjective();
+	}
 }
 
 function obj3() {
