@@ -71,9 +71,13 @@ function obj3() {
 }
 
 function obj4() {
-	if(gameData.pps != 0) {
-		gameData.objective += 1;
+	for (let upgrade in gameData.upgrades[tempData.upgradeTab]) {
+		if(gameData.upgrades[tempData.upgradeTab][upgrade].a > 0) {
+			gameData.objective += 1;
 		document.getElementById("pps").style.display = "inline-block";
  		changeObjective();
+		}
 	}
 }
+
+if(gameData.debugging) { console.log("objectives.js loaded.") };

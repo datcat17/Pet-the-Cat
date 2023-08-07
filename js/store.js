@@ -47,6 +47,8 @@ document.getElementById("settings-trigger").addEventListener("click", function()
 });
 
 // Upgrades tab
-document.getElementById("automatic-trigger").addEventListener("click", function() {
-	changeTab("automatic");
+document.getElementById("upgrades-trigger").addEventListener("click", function() {
+	changeTab("upgrades");
 });
+
+if(gameData.debugging) { console.log("store.js loaded.") };

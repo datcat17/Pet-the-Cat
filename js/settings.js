@@ -16,3 +16,5 @@ document.getElementById("debug").onchange = function() {
 	
 	if(gameData.debugging) { console.log("Debugging enabled."); }
 };
+
+if(gameData.debugging) { console.log("settings.js loaded.") };

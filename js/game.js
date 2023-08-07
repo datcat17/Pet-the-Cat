@@ -23,9 +23,6 @@ function petClick(event) {
 	}, 100);
 }
 
-// Start loop
-window.requestAnimationFrame(gameLoop);
-
 // Game loop
 let oldTimeStamp = 0;
 let secondsPassed = 0;
@@ -40,3 +37,5 @@ function gameLoop(timeStamp) {
 
 // Event Listeners
 document.getElementById("cat").addEventListener("click", petClick);
+
+if(gameData.debugging) { console.log("game.js loaded.") };

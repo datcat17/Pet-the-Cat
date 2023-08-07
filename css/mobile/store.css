@@ -15,6 +15,7 @@
     #store {
         position: relative; 
         display: none;
+        flex-direction: column;
     
         right: 0;
         bottom: 0;
@@ -35,8 +36,6 @@
         width: 100%;
         
         border-right: 2px solid black;
-    
-        /* float: left; */
     }
 
     #tabs > * {

@@ -13,20 +13,31 @@ if(mobile) {
 
 // Temporary data. Reset on page reload
 let tempData = {
-	currentTab: "automatic"
+	currentTab: "upgrades",
+	upgradeTab: "automatic"
 }
 
 // Initialize game data with default values
 let gameData = {
-	debugging: false,
+	version: "0.2.0-alpha",
+	debugging: true,
 	pets: 0,
 	ppc: 1, // Pets per click
 	pps: 0, // Pets per second
 	objective: 0,
 	upgrades: {
-		u1: {name: "Robotic Hand", c: 100, a: 0, v: 1},
-		u2: {name: "Upgrade 2", c: 500, a: 0, v: 5},
-		u3: {name: "Upgrade 3", c: 5000, a: 0, v: 50}
+		// (b)ase cost, (c)ost, (a)mount, (v)alue, cost (s)cale
+		automatic: {
+			a1: {name: "Robotic Hand", b: 100, c: 100, a: 0, v: 1, s: 1.15},
+			a2: {name: "Upgrade 2", b: 500, c: 500, a: 0, v: 5, s: 1.15},
+			a3: {name: "Upgrade 3", b: 5000, c: 5000, a: 0, v: 50, s: 1.15}
+		},
+		manual: {
+			m1: {name: "Cat Brush", b: 100, c: 100, a: 0, v: 1, s: 1.15},
+		},
+		multiplier: {
+			x1: {name: "Catnip", b: 10000, c: 10000, a: 0, v: 2, s: 1.15},
+		}
 	}
 }
 
@@ -36,12 +47,21 @@ let savegame = JSON.parse(localStorage.getItem("petTheCatSave"));
 // If a savegame is found, load it
 if (savegame !== null) {
 	if(gameData.debugging) { console.log("Found save. Loading save..."); }
-	gameData = savegame;
-	if(gameData.debugging) { console.log("Save Loaded."); }
+
+	if(savegame.version != gameData.version) {
+		loadScript("js/compatibility.js");
+	}
+	else {
+		gameData = savegame;
+		if(gameData.debugging) { console.log("Save Loaded."); }
+		initialize();
+	}
+
 }
 // Else, leave default values
 else {
 	if(gameData.debugging) { console.log("No save found. Leaving default values."); }
+	initialize();
 }
 
 // Scripts to be dynamically loaded
@@ -50,41 +70,51 @@ let scripts = [
 	"js/objectives.js",
 	"js/upgrades.js",
 	"js/store.js",
-	"js/settings.js"
+	"js/settings.js",
+	"js/startgame.js"
 ];
 
 // Dynamically load all scripts in the above list
 function loadScript(url) {
-   let head = document.getElementsByTagName('head')[0];
-   let script = document.createElement('script');
-   script.type = 'text/javascript';
-   script.src = url;
+    let head = document.getElementsByTagName('head')[0];
+    let script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    script.async = false;
 
-   head.appendChild(script);
+    head.appendChild(script);
 }
 
 for (const url of scripts) {
 	loadScript(url);
 }
 
-// Set debugging checkbox to correct value
-document.getElementById("debug").checked = gameData.debugging;
 
-// Save game every saveTimer seconds
-// let saveTimer = 3000;
-window.setInterval(function() {
-	localStorage.setItem("petTheCatSave", JSON.stringify(gameData));
-}, 3000);
+function initialize() {
+	// Set debugging checkbox to correct value
+	document.getElementById("debug").checked = gameData.debugging;
 
-// Prevent cat from being dragged
-document.getElementById("cat").ondragstart = function() { return false; };
+	// Save game every saveTimer seconds
+	// let saveTimer = 3000;
+	window.setInterval(function() {
+		localStorage.setItem("petTheCatSave", JSON.stringify(gameData));
+	}, 3000);
 
-// Hide open store button if not unlocked
-if(gameData.objective < 2) {
-	document.getElementById("open-store").style.display = "none";
-}
+	// Prevent cat from being dragged
+	document.getElementById("cat").ondragstart = function() { return false; };
 
-// Hide pps if 0
-if(gameData.pps == 0) {
-	document.getElementById("pps").style.display = "none";
+	// Hide open store button if not unlocked
+	if(gameData.objective < 2) {
+		document.getElementById("open-store").style.display = "none";
+	}
+
+	// Hide pps if 0
+	if(gameData.pps == 0) {
+		document.getElementById("pps").style.display = "none";
+	}
+
+	// Set HTML version number to current version
+	document.getElementById("version").innerHTML = gameData.version;
+
+	if(gameData.debugging) { console.log("Game data initialized."); }
 }
