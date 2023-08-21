@@ -2,7 +2,7 @@
 
 function updatePPS() {
     let buffer = 0;
-    let multiplier = 1;
+    let multiplier = 0;
     for (let id in gameData.upgrades.automatic) {
         buffer += gameData.upgrades.automatic[id].a * gameData.upgrades.automatic[id].v;
     }
@@ -11,91 +11,87 @@ function updatePPS() {
         multiplier += gameData.upgrades.multiplier[id].a * gameData.upgrades.multiplier[id].v;
     }
 
+    if(multiplier == 0) {
+        multiplier = 1;
+    }
+
     console.log(multiplier);
     gameData.pps = buffer * multiplier;
 }
 
 function updatePPC() {
     let buffer = 0;
+    let multiplier = 0;
     for (let id in gameData.upgrades.manual) {
         buffer += gameData.upgrades.manual[id].a * gameData.upgrades.manual[id].v;
     }
 
-    gameData.ppc = buffer + 1;
+    for (let id in gameData.upgrades.multiplier) {
+        multiplier += gameData.upgrades.multiplier[id].a * gameData.upgrades.multiplier[id].v;
+    }
+
+    if(multiplier == 0) {
+        multiplier = 1;
+    }
+
+    if (buffer == 0) {
+        buffer = 1;
+    }
+
+    gameData.ppc = buffer * multiplier;
 }
 
 function buyUpgrade(event) {
     let type = event.target.id;
     let upgrade;
+
     if(type.charAt(0) == "a") {
         upgrade = gameData.upgrades.automatic[event.target.id];
-        if(gameData.debugging) { console.log("Automatic upgrade bought."); }
+        type = "Automatic";
     }
     else if(type.charAt(0) == "m") {
         upgrade = gameData.upgrades.manual[event.target.id];
-        if(gameData.debugging) { console.log("Manual upgrade bought."); }
+        type = "Manual";
     }
     else if(type.charAt(0) == "x") {
         upgrade = gameData.upgrades.multiplier[event.target.id];
-        if(gameData.debugging) { console.log("Multiplier upgrade bought."); }
+        type = "Multiplier";
     }
+
+    if(upgrade.c > gameData.pets) { return; }
+
+    gameData.pets -= upgrade.c;
     
+    if(gameData.debugging) { console.log(`${type} upgrade bought.`); }
 
-    if(gameData.pets >= Math.floor(upgrade.c)) {
-        gameData.pets -= Math.floor(upgrade.c);
-        upgrade.a += 1;
-
-        upgrade.c = upgrade.b * upgrade.s ** (upgrade.a + 1);
-        event.target.innerHTML = `<h2>${upgrade.name}</h2><h3>${Math.floor(upgrade.c)} pets</h3>`;
-        updatePPS();
-        updatePPC();
-    }
+    upgrade.a += 1;
+    upgrade.c = upgrade.b * upgrade.s ** (upgrade.a + 1);
+    event.target.getElementsByTagName("h3")[1].innerHTML = formatNumber(Math.floor(upgrade.c));
+    event.target.getElementsByTagName("h3")[0].innerHTML = formatNumber(upgrade.a);
+    updatePPS();
+    updatePPC();
 }
 
-// Changes the upopgrade tab
+// Changes the open upgrade tab
 function changeUpgradeTab(newTab) {
     document.getElementById(tempData.upgradeTab).style.display = "none";
     document.getElementById(newTab).style.display = "flex";
 	tempData.upgradeTab = newTab;
 }
 
-// Add automatic upgrades
-for (let id in gameData.upgrades.automatic) {
-	let upgrade = gameData.upgrades.automatic[id];
-	let upgrade_container = document.getElementById("automatic");
-	let new_element = document.createElement("li");
-
-	new_element.innerHTML = `<h2>${upgrade.name}</h2><h3>${Math.floor(upgrade.c)} pets</h3>`;
-	new_element.id = id;
-
-	new_element.addEventListener("click", buyUpgrade);
-	upgrade_container.appendChild(new_element);
-}
-
-// Add manual upgrades
-for (let id in gameData.upgrades.manual) {
-	let upgrade = gameData.upgrades.manual[id];
-	let upgrade_container = document.getElementById("manual");
-	let new_element = document.createElement("li");
-
-	new_element.innerHTML = `<h2>${upgrade.name}</h2><h3>${Math.floor(upgrade.c)} pets</h3>`;
-	new_element.id = id;
-
-	new_element.addEventListener("click", buyUpgrade);
-	upgrade_container.appendChild(new_element);
-}
-
-// Add multiplier upgrades
-for (let id in gameData.upgrades.multiplier) {
-	let upgrade = gameData.upgrades.multiplier[id];
-	let upgrade_container = document.getElementById("multiplier");
-	let new_element = document.createElement("li");
-
-	new_element.innerHTML = `<h2>${upgrade.name}</h2><h3>${Math.floor(upgrade.c)} pets</h3>`;
-	new_element.id = id;
-
-	new_element.addEventListener("click", buyUpgrade);
-	upgrade_container.appendChild(new_element);
+// Dynamically add upgrades
+for (let type in gameData.upgrades) {
+    for (let id in gameData.upgrades[type]) {
+        let upgrade = gameData.upgrades[type][id];
+        let upgrade_container = document.getElementById(type);
+        let new_element = document.createElement("li");
+    
+        new_element.innerHTML = `<h3>${upgrade.a}</h3><div class="spacer"></div><div><h2>${upgrade.name}</h2><h3>${formatNumber(Math.floor(upgrade.c))} pets</h3></div><h3>+${upgrade.v} pps</h3>`;
+        new_element.id = id;
+    
+        new_element.addEventListener("click", buyUpgrade);
+        upgrade_container.appendChild(new_element);
+    }
 }
 
 document.getElementById("automatic-trigger").addEventListener("click", function() {

@@ -3,7 +3,7 @@ function toggleStore(action) {
 	let store = document.getElementById("store");
 
 	if(action == "close") {
-		store.style.display = "flex";
+		store.style.display = "block";
 		store.classList.add("open-store");
 
 		setTimeout(function() {

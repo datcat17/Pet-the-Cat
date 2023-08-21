@@ -5,9 +5,16 @@ document.getElementById("export").addEventListener("click", function() {
 
 document.getElementById("import").addEventListener("click", function() {
     let imported = document.getElementById("savegamebox").value;
-    localStorage.setItem("petTheCatSave", atob(imported));
-    window.location.reload();
+    if(imported) {
+        localStorage.setItem("petTheCatSave", atob(imported));
+        window.location.reload();
+    }
+    else {
+        if(gameData.debugging) { console.log("Error. Save empty. "); }
+    }
 })
+
+document.getElementById("wipe").addEventListener("click", wipeSave);
 
 // Toggle debug
 document.getElementById("debug").onchange = function() {

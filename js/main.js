@@ -1,5 +1,11 @@
 "use strict";
 
+// Wipe the existing save
+function wipeSave() {
+	localStorage.removeItem('petTheCatSave');
+	window.location.reload();
+}
+
 // Disable zooming on mobile browsers
 let mobile = window.mobileAndTabletCheck = function() {
 	let check = false;
@@ -19,7 +25,7 @@ let tempData = {
 
 // Initialize game data with default values
 let gameData = {
-	version: "0.2.0-alpha",
+	version: "0.2.1-alpha",
 	debugging: true,
 	pets: 0,
 	ppc: 1, // Pets per click
@@ -67,6 +73,7 @@ else {
 // Scripts to be dynamically loaded
 let scripts = [
 	"js/game.js",
+	"js/format.js",
 	"js/objectives.js",
 	"js/upgrades.js",
 	"js/store.js",
@@ -89,16 +96,19 @@ for (const url of scripts) {
 	loadScript(url);
 }
 
+// Save the game to localStorage
+function saveGame() {
+	localStorage.setItem("petTheCatSave", JSON.stringify(gameData));
+}
+
 
 function initialize() {
 	// Set debugging checkbox to correct value
 	document.getElementById("debug").checked = gameData.debugging;
 
 	// Save game every saveTimer seconds
-	// let saveTimer = 3000;
-	window.setInterval(function() {
-		localStorage.setItem("petTheCatSave", JSON.stringify(gameData));
-	}, 3000);
+	let saveTimer = 3000;
+	window.setInterval(saveGame, saveTimer);
 
 	// Prevent cat from being dragged
 	document.getElementById("cat").ondragstart = function() { return false; };
