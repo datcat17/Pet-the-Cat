@@ -17,7 +17,7 @@ function changeObjective() {
 	document.getElementById("objective").classList.add("objective-anim");
 
 	setTimeout(function() {
-		document.getElementById("objective").style.backgroundColor="lightgray";
+		document.getElementById("objective").style.backgroundColor="#d8ccb6";
 		document.getElementById("objective").lastChild.previousSibling.innerHTML = descriptions[gameData.objective];
 	}, 1000);
 

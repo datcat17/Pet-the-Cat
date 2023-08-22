@@ -61,7 +61,7 @@
     top: 0;
     width: 0%;
     height: 100vh;
-    background-color: lightgray;
+    background-color: #dcd4c5;
     z-index: 1;
 
     border-left: 2px solid black;
@@ -88,7 +88,7 @@
     border: 2px solid black;
     border-right: none;
     border-radius: 12px 0 0 12px;
-    background-color: lightgray;
+    background-color: #d8ccb6;
     opacity: 0.2;
     transition: opacity 0.2s;
 
@@ -154,7 +154,7 @@
     padding: 5%;
     box-sizing: border-box;
 
-    background-color: lightgray;
+    background-color: #d8ccb6;
 }
 
 #tabs > *:first-of-type {

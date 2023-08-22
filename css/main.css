@@ -8,9 +8,14 @@ body:before {
 	content: desktop;
 }
 
+body {
+	background-color: #e2dbce;
+	text-align: center;
+}
+
 body * {
 	user-select: none;
-	text-align: center;
+	
 }
 
 #cat {

@@ -44,6 +44,12 @@ let gameData = {
 		multiplier: {
 			x1: {name: "Catnip", b: 10000, c: 10000, a: 0, v: 2, s: 1.15},
 		}
+	},
+	theme: {
+		state: 0,
+		themes: {
+			coffee: ["#e2dbce", "d8ccb6"]
+		}
 	}
 }
 

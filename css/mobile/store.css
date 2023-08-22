@@ -31,7 +31,6 @@
         bottom: 0;
         width: 100vw;
         height: 0;
-        background-color: lightgray;
         z-index: 1;
     
         border: none;
@@ -83,31 +82,23 @@
     }
     
     #open-store {
-        position: absolute;
         width: 60%;
         height: 3vh;
     
-        right: 0;
         left: 0;
-        bottom: 0;
         top: auto;
         margin: auto;
-    
+
         border: 2px solid black;
         border-bottom: none;
         border-radius: 12px 12px 0 0;
-        background-color: lightgray;
-        opacity: 0.2;
-        transition: opacity 0.2s;
-    
-        display: block;
     }
 
     #open-store:hover {
         opacity: 1;
     }
-    
-    #store li {#upgrade-tabs {
+
+    #upgrade-tabs {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -117,6 +108,8 @@
     
         box-sizing: border-box;
     }
+    
+    #store li {
         /* grid-template-columns: 3fr 2fr; */
 
         margin: 2% auto;
