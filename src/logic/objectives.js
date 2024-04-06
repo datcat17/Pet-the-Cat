@@ -1,5 +1,7 @@
 "use strict";
 
+import { gameData } from '@/logic/main.js';
+
 let descriptions = [
 	"Pet the cat",
 	"Pet the cat 10 times",
@@ -29,7 +31,7 @@ function changeObjective() {
 
 
 // Checks to see if the current objective has been completed. If so, change the objective
-function checkObjective() {
+export const checkObjective = () => {
  	switch(gameData.objective) {
  	case 0:
  		obj1();
@@ -64,7 +66,7 @@ function obj2() {
 }
 
 function obj3() {
-	if(document.getElementById("store").classList.contains("open-store")) {
+	if(document.getElementById("MenuBar").classList.contains("open-store")) {
 		gameData.objective += 1;
  		changeObjective();
 	}

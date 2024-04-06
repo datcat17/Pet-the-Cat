@@ -1,5 +1,9 @@
 "use strict";
 
+import { formatNumber } from '@/logic/format.js';
+import { gameData } from '@/logic/main.js';
+import { checkObjective } from '@/logic/objectives.js';
+
 function updatePets(secondsPassed) {
 	let buffer = gameData.pps * secondsPassed;
 	gameData.pets += buffer;
@@ -39,7 +43,7 @@ function petClick(event) {
 // Game loop
 let oldTimeStamp = 0;
 let secondsPassed = 0;
-function gameLoop(timeStamp) {
+export const gameLoop = (timeStamp) => {
 	secondsPassed = (timeStamp - oldTimeStamp) / 1000;
 	oldTimeStamp = timeStamp;
 	updatePets(secondsPassed);

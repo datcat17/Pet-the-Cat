@@ -1,0 +1,23 @@
+.menu-bar {
+    /* Layout */
+    height: 100%;
+    width: 50%;
+    /* Styles */
+}
+
+.tab-content {
+    width: 100%;
+}
+
+@keyframes store-anim {
+    from {width: 50%;}
+    to {width: 0%;}
+}
+
+.open-store {
+    animation: store-anim 0.2s ease-out 0s 1 reverse forwards;
+}
+
+.close-store {
+    animation: store-anim 0.2s ease-out 0s 1 normal forwards;
+}

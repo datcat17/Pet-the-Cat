@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link href="css/main.css" rel="stylesheet">
-    <script src="js/main.js" defer></script>
+    <meta charset="UTF-8" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
@@ -17,70 +14,11 @@
     <meta name="msapplication-config" content="icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet the Cat</title>
   </head>
   <body>
-    <h3 id="version"></h3>
-    <div id="main">
-      <div id="objective">
-        <h3>Objective</h3>
-        <h2>Pet the cat</h2>
-      </div>
-      <div id="values">
-        <p id="pets"></p>
-        <p id="pps"></p>
-      </div>
-      
-      <div id="cat-box">
-        <img id="cat" src="assets/cats/white-kitten/white-kitten7.png" alt="cat">
-      </div>
-      
-    </div>
-
-    <div id="store"> 
-      <div id="store-container">
-        <div id="tabs">
-          <div id="store-collapse"><img src="assets/icons/x.svg"></div>
-          <div id="upgrades-trigger"><img src="assets/icons/upgrades.svg"></div>
-          <div id=""></div>
-          <div id=""></div>
-          <div id="settings-trigger"><img src="assets/icons/settings3.svg"></div>
-        </div>
-        
-        <div id="upgrades" class="tabs">
-          <div id="upgrade-tabs">
-            <div id="automatic-trigger" class="tabs"><h3>Automatic</h3></div>
-            <div id="manual-trigger" class="tabs"><h3>Manual</h3></div>
-            <div id="multiplier-trigger" class="tabs"><h3>Multiplier</h3></div>
-          </div>
-          <ul id="automatic" class="upgrade-container"></ul>
-          <ul id="manual" class="upgrade-container"></ul>
-          <ul id="multiplier" class="upgrade-container"></ul>
-        </div>
-
-        <div id="settings" class="tabs">
-          <div id="settings-container">
-            <h2>Settings</h2>
-            <div id="debugging-container">
-              <label for="debug">Enable Debugging</label>
-              <input id="debug" type="checkbox">
-
-              <button id="wipe">Wipe Save</button>
-            </div>
-            
-            <div class="spacer"></div>
-            
-            <div id="save-container">
-              <textarea id="savegamebox"></textarea>
-              <div id="export">Export Save</div>
-              <div id="import">Import Save</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-
-    <div id="open-store"></div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,7 +1,0 @@
-v0.1.0-alpha -- 2023-08-05
-Initial Release. Includes a clickable cat, three upgrades, and four objectives.
-
-v0.1.1-alpha -- 2023-08-05
-- Added a mobile layout
-- Added a version number in the corner
-- Fixed some styling issues.

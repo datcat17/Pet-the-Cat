@@ -1,0 +1,39 @@
+import React, { useState } from 'react';
+import './TabSwitcher.css';
+
+const closeStore = () => {
+    document.getElementById("MenuBar").classList.remove("open-store");
+    document.getElementById("MenuBar").classList.add("close-store");
+}
+
+const TabSwitcher = ({ tabs }) => {
+
+    const [activeTab, setActiveTab] = useState(tabs[0].name);
+
+    return <div className="tab-switcher">
+        <div className='tab-list'>
+            <button key="close" onClick={ closeStore }>Close</button>
+            {tabs.map((tab) => {
+                console.log("Adding");
+                return <button
+                    key={tab.name}
+                    className={`tab-button ${activeTab === tab.name ? 'active' : ''}`}
+                    onClick={() => setActiveTab(tab.name)}
+                >
+                    {tab.label}
+                </button>
+            })}
+        </div>
+        
+        <div className="tab-content">
+            {tabs.map((tab) => {
+                if (tab.name === activeTab) {
+                    return <div key={tab.name}>{tab.component}</div>;
+                }
+            return null;
+        })}
+      </div>
+    </div>;
+}
+
+export default TabSwitcher;

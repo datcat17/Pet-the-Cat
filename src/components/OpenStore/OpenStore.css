@@ -1,0 +1,24 @@
+#open-store {
+    position: absolute;
+    width: 3vh;
+    height: 60vh;
+
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    border: 2px solid black;
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    background-color: #d8ccb6;
+    opacity: 0.2;
+    transition: opacity 0.2s;
+
+    display: block;
+}
+
+#open-store:hover {
+    opacity: 1;
+}
+

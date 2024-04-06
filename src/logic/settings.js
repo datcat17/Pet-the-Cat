@@ -1,3 +1,8 @@
+"use strict";
+
+import { gameData } from '@/logic/main.js';
+import { wipeSave } from '@/logic/main.js';
+
 document.getElementById("export").addEventListener("click", function() {
     let exported = btoa(JSON.stringify(gameData));
     document.getElementById("savegamebox").value = exported;

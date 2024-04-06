@@ -1,5 +1,8 @@
 "use strict";
 
+import { gameData } from '@/logic/main.js';
+import { formatNumber } from '@/logic/format.js';
+
 function updatePPS() {
     let buffer = 0;
     let multiplier = 0;

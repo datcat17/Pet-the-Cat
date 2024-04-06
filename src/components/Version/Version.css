@@ -1,0 +1,11 @@
+#version {
+	position: absolute;
+	bottom: 2vh;
+	left: 2vh;
+
+	margin: 0;
+
+	/* color: rgb(189, 189, 189); */
+	color: black;
+	opacity: 0.3;
+}

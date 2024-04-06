@@ -1,5 +1,7 @@
-function formatNumber(num) {
-    numStr = num.toString();
+"use strict";
+
+export const formatNumber = (num) => {
+    let numStr = num.toString();
     if(num >= 1000000) {
         return `${numStr.charAt(0)}.${numStr.charAt(1)}e${numStr.length}`;
     }

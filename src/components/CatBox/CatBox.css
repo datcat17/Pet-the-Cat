@@ -1,0 +1,16 @@
+.cat-box {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.cat-box img {
+    object-fit: contain;
+    display: block;
+
+    /* height: 40%; */
+    width: 20vw;
+    margin: 0 auto;
+}
