@@ -1,27 +1,13 @@
-// Scripts to be dynamically loaded
-let scripts = [
-    "src/logic/main.js",
-	"src/logic/game.js",
-	"src/logic/format.js",
-	"src/logic/objectives.js",
-	"src/logic/upgrades.js",
-	"src/logic/store.js",
-	"src/logic/settings.js",
-	"src/logic/startgame.js"
-];
+import mainLogic from "./main.js";
+import startGame, { gameLoop } from './game.js';
+// Objectives gets loaded by game.js
+import loadSettings from './settings.js';
 
-// Dynamically load all scripts in the above list
-function loadScript(url) {
-    let head = document.getElementsByTagName('head')[0];
-    let script = document.createElement('script');
-    // script.type = 'text/javascript';
-	script.type = 'module';
-    script.src = url;
-    script.async = false;
+const loadFiles = () => {
+    mainLogic.startMain();
+    startGame();
 
-    head.appendChild(script);
+    gameLoop();
 }
 
-scripts.map((script) => {
-    loadScript(script);
-});
+export default loadFiles;

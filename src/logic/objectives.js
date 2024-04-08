@@ -1,6 +1,15 @@
 "use strict";
 
-import { gameData } from '@/logic/main.js';
+import mainLogic from '@/logic/main.js';
+
+const gameData = mainLogic.gameData;
+
+const startObjectives = () => {
+	// Initialize objective
+	document.getElementById("objective").lastChild.previousSibling.innerHTML = descriptions[gameData.objective];
+
+	if(gameData.debugging) { console.log("objectives.js loaded.") };
+}
 
 let descriptions = [
 	"Pet the cat",
@@ -8,10 +17,6 @@ let descriptions = [
 	"Open the store tab",
 	"Buy an upgrade"
 ];
-
-// Initialize objective
-document.getElementById("objective").lastChild.previousSibling.innerHTML = descriptions[gameData.objective];
-
 
 // Changes the current objective
 function changeObjective() {
@@ -28,7 +33,6 @@ function changeObjective() {
 	}, 2000)
 	
 }
-
 
 // Checks to see if the current objective has been completed. If so, change the objective
 export const checkObjective = () => {
@@ -81,5 +85,3 @@ function obj4() {
 		}
 	}
 }
-
-if(gameData.debugging) { console.log("objectives.js loaded.") };

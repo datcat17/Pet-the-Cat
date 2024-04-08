@@ -14,7 +14,6 @@ const TabSwitcher = ({ tabs }) => {
         <div className='tab-list'>
             <button key="close" onClick={ closeStore }>Close</button>
             {tabs.map((tab) => {
-                console.log("Adding");
                 return <button
                     key={tab.name}
                     className={`tab-button ${activeTab === tab.name ? 'active' : ''}`}

@@ -1,11 +1,28 @@
 "use strict";
 
+import mainLogic from '@/logic/main.js';
 import { formatNumber } from '@/logic/format.js';
-import { gameData } from '@/logic/main.js';
 import { checkObjective } from '@/logic/objectives.js';
+
+const gameData = mainLogic.gameData;
+
+const startGame = () => {
+	// Event Listeners
+	document.getElementById("cat").addEventListener("click", petClick);
+
+	if(gameData.debugging) { console.log("game.js loaded.") };
+}
+
+export default startGame;
 
 function updatePets(secondsPassed) {
 	let buffer = gameData.pps * secondsPassed;
+
+	// No idea why, but the first two iterations are NaN
+	if(isNaN(buffer)) {
+		console.log("Buffer is NaN");
+		return;
+	}
 	gameData.pets += buffer;
 	document.getElementById("pets").innerHTML = `${formatNumber(Math.floor(gameData.pets))}`;
 	document.getElementById("pps").innerHTML = ` + ${formatNumber(gameData.pps)} / s`;
@@ -51,8 +68,3 @@ export const gameLoop = (timeStamp) => {
 
     window.requestAnimationFrame(gameLoop);
 }
-
-// Event Listeners
-document.getElementById("cat").addEventListener("click", petClick);
-
-if(gameData.debugging) { console.log("game.js loaded.") };

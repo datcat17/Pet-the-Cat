@@ -1,3 +1,28 @@
+const startStore = () => {
+	// Event Listeners
+	document.getElementById("store-collapse").addEventListener("click", function() {
+		toggleStore("open");
+	});
+
+	document.getElementById("open-store").addEventListener("click", function() {
+		toggleStore("close");
+	});
+
+	// Settings tab
+	document.getElementById("settings-trigger").addEventListener("click", function() {
+		changeTab("settings");
+	});
+
+	// Upgrades tab
+	document.getElementById("upgrades-trigger").addEventListener("click", function() {
+		changeTab("upgrades");
+	});
+
+	if(gameData.debugging) { console.log("store.js loaded.") };
+}
+
+export default startStore;
+
 function toggleStore(action) {
 	let mq = window.matchMedia( "(max-width: 767px)" );
 	let store = document.getElementById("store");
@@ -30,25 +55,3 @@ function changeTab(newTab) {
     document.getElementById(newTab).style.display = "block";
 	tempData.currentTab = newTab;
 }
-
-
-// Event Listeners
-document.getElementById("store-collapse").addEventListener("click", function() {
-	toggleStore("open");
-});
-
-document.getElementById("open-store").addEventListener("click", function() {
-	toggleStore("close");
-});
-
-// Settings tab
-document.getElementById("settings-trigger").addEventListener("click", function() {
-	changeTab("settings");
-});
-
-// Upgrades tab
-document.getElementById("upgrades-trigger").addEventListener("click", function() {
-	changeTab("upgrades");
-});
-
-if(gameData.debugging) { console.log("store.js loaded.") };
