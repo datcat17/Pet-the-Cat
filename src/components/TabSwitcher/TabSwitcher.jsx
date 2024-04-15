@@ -3,7 +3,7 @@ import './TabSwitcher.css';
 
 const closeStore = () => {
     document.getElementById("MenuBar").classList.remove("open-store");
-    document.getElementById("MenuBar").classList.add("close-store");
+//     document.getElementById("MenuBar").classList.add("close-store");
 }
 
 const TabSwitcher = ({ tabs }) => {
@@ -13,6 +13,7 @@ const TabSwitcher = ({ tabs }) => {
     return <div className="tab-switcher">
         <div className='tab-list'>
             <button key="close" onClick={ closeStore }>Close</button>
+
             {tabs.map((tab) => {
                 return <button
                     key={tab.name}
@@ -23,16 +24,18 @@ const TabSwitcher = ({ tabs }) => {
                 </button>
             })}
         </div>
-        
+
         <div className="tab-content">
-            {tabs.map((tab) => {
-                if (tab.name === activeTab) {
-                    return <div key={tab.name}>{tab.component}</div>;
-                }
-            return null;
-        })}
-      </div>
-    </div>;
+            {tabs.map(tab => (
+                <div
+                    key={tab.name}
+                    style={{height: "100%", display: tab.name === activeTab ? 'block' : 'none' }}
+                >
+                    {tab.component}
+                </div>
+            ))}
+        </div>
+    </div>
 }
 
 export default TabSwitcher;

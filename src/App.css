@@ -10,21 +10,15 @@
     height: 100vh;
     margin: 0;
     text-align: center;
+
+    overflow: hidden;
 }
 
 #root * {
     box-sizing: border-box;
 }
 
-/* Temporary grid lines */
-/* #root > * {
-    border: 1px dashed red;
-} */
-
 #CatBox {
     width: 100%;
 }
 
-#MenuBar {
-    width: 100%;
-}

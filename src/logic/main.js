@@ -36,6 +36,20 @@ class MainLogic {
 		}
 	}
 
+	exportSave = () => {
+		return btoa(JSON.stringify(this.gameData));
+	}
+
+	importSave = (imported) => {
+		if(imported) {
+			localStorage.setItem("petTheCatSave", atob(imported));
+			window.location.reload();
+		}
+		else {
+			if(this.gameData.debugging) { console.log("Error. Save empty. "); }
+		}
+	}
+
 	wipeSave = () => {
 		localStorage.removeItem('petTheCatSave');
 		window.location.reload();

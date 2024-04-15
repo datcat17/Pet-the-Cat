@@ -4,6 +4,8 @@ import startGame, { gameLoop } from './game.js';
 import loadSettings from './settings.js';
 
 const loadFiles = () => {
+    console.log("loading files");
+
     mainLogic.startMain();
     startGame();
 

@@ -12,6 +12,7 @@ export default ({ mode }) => {
     define: {
       __APP_VERSION__: JSON.stringify(packageJson.version),
     },
+    base: '/html/pet-the-cat-react/',
     plugins: [react()],
     resolve: {
       alias: {

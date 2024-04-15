@@ -1,8 +1,12 @@
 import "./OpenStore.css";
 
 const openStore = () => {
-    document.getElementById("MenuBar").classList.remove('close-store');
-    document.getElementById("MenuBar").classList.add('open-store');
+    // Should be using Refs, but I don't really care'
+    const menuBar = document.getElementById("MenuBar")
+    // menuBar.classList.remove('close-store');
+    menuBar.classList.add('open-store');
+
+//     menuBar.offsetHeight;
 }
 
 const OpenStore = ({ id }) => {

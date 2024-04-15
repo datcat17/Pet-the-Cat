@@ -9,8 +9,10 @@ import Version from './components/Version/Version';
 
 import loadFiles from '@/logic/loader.js';
 
-function App() {
+const App = () => {
   useEffect(() => {
+    console.log("loaded App");
+//     setTimeout(loadFiles, 10000);
     loadFiles();
   }, [])
 

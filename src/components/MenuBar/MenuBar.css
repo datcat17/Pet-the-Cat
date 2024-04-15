@@ -1,16 +1,22 @@
 .menu-bar {
     /* Layout */
     height: 100%;
-    width: 50%;
+    width: 0%;
     /* Styles */
+    opacity: 0;
+
+    transition: width 0.2s ease-out, opacity 0.2s ease-out;
+
+    z-index: 1;
 }
 
 .tab-content {
     width: 100%;
+    background-color: white;
 }
 
-@keyframes store-anim {
-    from {width: 50%;}
+/*@keyframes store-anim {
+    from {width: 100%;}
     to {width: 0%;}
 }
 
@@ -20,4 +26,9 @@
 
 .close-store {
     animation: store-anim 0.2s ease-out 0s 1 normal forwards;
+}*/
+
+.open-store {
+    width: 100%;
+    opacity: 1;
 }

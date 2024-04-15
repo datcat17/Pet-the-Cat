@@ -1,0 +1,12 @@
+#import, #export {
+    margin: 5px;
+}
+
+#savegamebox {
+    width: 50%;
+    height: 30%;
+}
+
+#save-container {
+    height: 100%;
+}
