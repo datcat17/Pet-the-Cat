@@ -1,0 +1,19 @@
+{
+  "name": "pet-the-cat",
+  "version": "0.3.0",
+  "description": "Pet the Cat is an incremental game inspired by Cookie Clicker and Antimatter Dimensions. Pet the Cat is in VERY early development.",
+  "homepage": "https://github.com/datcat17/Pet-the-Cat#readme",
+  "bugs": {
+    "url": "https://github.com/datcat17/Pet-the-Cat/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datcat17/Pet-the-Cat.git"
+  },
+  "license": "MIT",
+  "author": "datcat17",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
