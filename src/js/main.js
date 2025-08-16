@@ -70,32 +70,6 @@ else {
 	initialize();
 }
 
-// Scripts to be dynamically loaded
-let scripts = [
-	"js/game.js",
-	"js/format.js",
-	"js/objectives.js",
-	"js/upgrades.js",
-	"js/store.js",
-	"js/settings.js",
-	"js/startgame.js"
-];
-
-// Dynamically load all scripts in the above list
-function loadScript(url) {
-    let head = document.getElementsByTagName('head')[0];
-    let script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = url;
-    script.async = false;
-
-    head.appendChild(script);
-}
-
-for (const url of scripts) {
-	loadScript(url);
-}
-
 // Save the game to localStorage
 function saveGame() {
 	localStorage.setItem("petTheCatSave", JSON.stringify(gameData));
