@@ -14,6 +14,9 @@
   "author": "datcat17",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^7.1.2"
   }
 }
