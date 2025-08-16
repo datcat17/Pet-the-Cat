@@ -1,9 +1,8 @@
 "use strict";
 
 import { formatNumber } from "./format";
-import { checkObjective } from "./objectives";
 
-function updatePets(secondsPassed) {
+export function updatePets(secondsPassed) {
 	let buffer = gameData.pps * secondsPassed;
 	gameData.pets += buffer;
 	document.getElementById("pets").innerHTML = `${formatNumber(Math.floor(gameData.pets))}`;
@@ -37,22 +36,6 @@ function petClick(event) {
 	setTimeout(_ => {
 		document.getElementsByTagName("body")[0].removeChild(number);
 	}, 500);
-}
-
-// Game loop
-let oldTimeStamp = 0;
-let secondsPassed = 0;
-function gameLoop(timeStamp) {
-	secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-	oldTimeStamp = timeStamp;
-	updatePets(secondsPassed);
-	checkObjective();
-
-    window.requestAnimationFrame(gameLoop);
-}
-
-export function startGame() {
-    window.requestAnimationFrame(gameLoop);
 }
 
 // Event Listeners
