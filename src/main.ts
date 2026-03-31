@@ -18,7 +18,8 @@ class Engine {
         window.requestAnimationFrame(this.mainLoop);
     }
 
-    mainLoop = () => {
+    mainLoop = (time: number) => {
+        this.timeStamp = time;
 	    const secondsPassed = (this.timeStamp - this.oldTimeStamp) / 1000;
 	    this.oldTimeStamp = this.timeStamp;
 	    updatePets(secondsPassed);
