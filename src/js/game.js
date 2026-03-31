@@ -1,10 +1,5 @@
 "use strict";
 
-export function updatePets(secondsPassed) {
-	let buffer = gameData.pps * secondsPassed;
-	gameData.pets += buffer;
-}
-
 function petClick(event) {
 	gameData.pets += gameData.ppc;
 

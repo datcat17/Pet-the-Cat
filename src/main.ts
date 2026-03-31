@@ -1,5 +1,4 @@
 import { gameData } from "./js/main";
-import { updatePets } from "./js/game";
 import { checkObjective } from "./js/objectives";
 import "./js/upgrades";
 import "./js/store";
@@ -40,7 +39,9 @@ class Engine {
         this.timeStamp = time;
         const secondsPassed = (this.timeStamp - this.oldTimeStamp) / 1000;
         this.oldTimeStamp = this.timeStamp;
-        updatePets(secondsPassed);
+
+        gameData.pets += gameData.pps * secondsPassed;
+
         checkObjective();
 
         this.numberStore.setItem("pets", gameData.pets);
