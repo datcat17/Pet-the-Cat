@@ -5,16 +5,30 @@ import "./js/upgrades";
 import "./js/store";
 import "./js/settings";
 
+import { Store } from "./store";
+
 class Engine {
     timeStamp: number;
     oldTimeStamp: number;
 
+    numberStore: Store<number>;
+    stringStore: Store<string>;
+
     constructor() {
         this.timeStamp = 0;
         this.oldTimeStamp = 0;
+
+        this.numberStore = new Store();
+        this.stringStore = new Store();
     }
 
     start() {
+        // Start stores
+        this.numberStore.startTicking(1/30*1000);
+        this.stringStore.startTicking(1/30*1000);
+
+        this.numberStore.createItem("pets", gameData.pets);
+        this.numberStore.createItem("pps", gameData.pps);
         window.requestAnimationFrame(this.mainLoop);
     }
 
@@ -24,6 +38,9 @@ class Engine {
 	    this.oldTimeStamp = this.timeStamp;
 	    updatePets(secondsPassed);
 	    checkObjective();
+
+        this.numberStore.setItem("pets", gameData.pets);
+        this.numberStore.setItem("pps", gameData.pps);
 
         window.requestAnimationFrame(this.mainLoop);
     }
