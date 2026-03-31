@@ -5,6 +5,7 @@ import "./js/upgrades";
 import "./js/store";
 import "./js/settings";
 
+import { initUI } from "./init";
 import { Store } from "./store";
 
 class Engine {
@@ -29,6 +30,9 @@ class Engine {
 
         this.numberStore.createItem("pets", gameData.pets);
         this.numberStore.createItem("pps", gameData.pps);
+
+        initUI(this.numberStore, this.stringStore);
+
         window.requestAnimationFrame(this.mainLoop);
     }
 

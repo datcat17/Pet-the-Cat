@@ -1,12 +1,8 @@
 "use strict";
 
-import { formatNumber } from "./format";
-
 export function updatePets(secondsPassed) {
 	let buffer = gameData.pps * secondsPassed;
 	gameData.pets += buffer;
-	document.getElementById("pets").innerHTML = `${formatNumber(Math.floor(gameData.pets))}`;
-	document.getElementById("pps").innerHTML = ` + ${formatNumber(gameData.pps)} / s`;
 }
 
 function petClick(event) {
