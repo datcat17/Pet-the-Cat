@@ -38,10 +38,10 @@ class Engine {
 
     mainLoop = (time: number) => {
         this.timeStamp = time;
-	    const secondsPassed = (this.timeStamp - this.oldTimeStamp) / 1000;
-	    this.oldTimeStamp = this.timeStamp;
-	    updatePets(secondsPassed);
-	    checkObjective();
+        const secondsPassed = (this.timeStamp - this.oldTimeStamp) / 1000;
+        this.oldTimeStamp = this.timeStamp;
+        updatePets(secondsPassed);
+        checkObjective();
 
         this.numberStore.setItem("pets", gameData.pets);
         this.numberStore.setItem("pps", gameData.pps);
