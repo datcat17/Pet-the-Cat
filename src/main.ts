@@ -1,4 +1,4 @@
-import "./js/main";
+import { gameData } from "./js/main";
 import { updatePets } from "./js/game";
 import { checkObjective } from "./js/objectives";
 import "./js/upgrades";

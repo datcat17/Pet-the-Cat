@@ -24,7 +24,7 @@ let tempData = {
 }
 
 // Initialize game data with default values
-let gameData = {
+export let gameData = {
 	version: "0.2.1-alpha",
 	debugging: true,
 	pets: 0,
